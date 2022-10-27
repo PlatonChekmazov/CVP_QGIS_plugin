@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CoordPluginDialogBase</class>
+ <widget class="QDialog" name="CoordPluginDialogBase">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>610</width>
+    <height>700</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>610</width>
+    <height>700</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>610</width>
+    <height>700</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>CVP</string>
+  </property>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>150</y>
+     <width>111</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>0</y>
+     <width>592</width>
+     <height>691</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="14" column="0">
+     <widget class="QCheckBox" name="name_of_polygon">
+      <property name="text">
+       <string>Название полигона</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="0">
+     <widget class="QCheckBox" name="distance">
+      <property name="text">
+       <string>Выводить расстояние между точками контура</string>
+      </property>
+     </widget>
+    </item>
+    <item row="19" column="0" colspan="3">
+     <widget class="QPushButton" name="act_btn">
+      <property name="text">
+       <string>Сохранить</string>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="0">
+     <widget class="QCheckBox" name="square">
+      <property name="text">
+       <string>Выводить общую площадь всех полигонов</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="13" column="1" colspan="2">
+     <widget class="QComboBox" name="choose">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <item>
+       <property name="text">
+        <string>ID</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Имя</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="7" column="0" colspan="2">
+     <widget class="QLineEdit" name="chisla">
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" colspan="3">
+     <widget class="QgsCheckableComboBox" name="layers"/>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string>Имя файла каталога координат</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0" colspan="2">
+     <widget class="QLineEdit" name="name"/>
+    </item>
+    <item row="16" column="0">
+     <widget class="QCheckBox" name="direct_angle">
+      <property name="text">
+       <string>Выводить дирекционные углы в каталог координат</string>
+      </property>
+     </widget>
+    </item>
+    <item row="10" column="0">
+     <widget class="QCheckBox" name="reverse">
+      <property name="text">
+       <string>Поменять местами координаты XY</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="2">
+     <widget class="QComboBox" name="comboBox">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <item>
+       <property name="text">
+        <string>Microsoft Excel (.xlsx)</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="12" column="0">
+     <widget class="QCheckBox" name="round_area">
+      <property name="text">
+       <string>Округлять площадь полигона до целых</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0" colspan="2">
+     <widget class="QPushButton" name="direct_btn">
+      <property name="text">
+       <string>Выбрать</string>
+      </property>
+     </widget>
+    </item>
+    <item row="17" column="0">
+     <widget class="QLabel" name="label_6">
+      <property name="text">
+       <string>Журнал:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Слой для получения координат</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="0">
+     <widget class="QLabel" name="label_4">
+      <property name="text">
+       <string>Точность координат в выводимом каталоге</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>Дериктория для выгрузки каталога координат</string>
+      </property>
+     </widget>
+    </item>
+    <item row="13" column="0">
+     <widget class="QCheckBox" name="id_crs">
+      <property name="text">
+       <string>Название системы координат</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="11" column="0">
+     <widget class="QCheckBox" name="first_point">
+      <property name="text">
+       <string>Выводить первую точку в конце списка точек каждого контура</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="18" column="0" colspan="3">
+     <widget class="QPlainTextEdit" name="test">
+      <property name="minimumSize">
+       <size>
+        <width>200</width>
+        <height>20</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>600</width>
+        <height>100</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item row="14" column="1" colspan="2">
+     <widget class="QComboBox" name="names_of_attr">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="15" column="0">
+     <widget class="QCheckBox" name="rumb">
+      <property name="text">
+       <string>Выводить румбы в каталог координат</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QgsCheckableComboBox</class>
+   <extends>QComboBox</extends>
+   <header>qgscheckablecombobox.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
