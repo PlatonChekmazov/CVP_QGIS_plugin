@@ -53,7 +53,8 @@ from qgis.core import (
   QgsVectorFileWriter,
   QgsWkbTypes,
   QgsSpatialIndex,
-  QgsVectorLayerUtils
+  QgsVectorLayerUtils,
+  QgsPoint
 )
 
 from qgis.core.additions.edit import edit
@@ -225,6 +226,8 @@ class CoordPluginDialog(QtWidgets.QDialog, FORM_CLASS, QtWidgets.QLabel, QtWidge
         b = ['№ точки', 'X,м', 'Y,м']
         if self.distance.isChecked():
             b.append('Длина м')
+        if self.rumb.isChecked():
+            b.append('Румб')
         self.shit.append(b)
         for i in range(1, len(list) + 1):
             if self.name_of_polygon.isChecked():
@@ -258,17 +261,20 @@ class CoordPluginDialog(QtWidgets.QDialog, FORM_CLASS, QtWidgets.QLabel, QtWidge
                 elif j == len(list[i - 1]) and fl == False:
                     self.shit.append([1, round(list[i - 1][0][0], int(self.chisla.text())), round(list[i - 1][0][1], int(self.chisla.text()))])
                 else:
+                    kirieshka = [c, a, b]
                     if self.distance.isChecked():
                         fr = list[i - 1][j - 1][0] - list[i - 1][j][0]
                         sc = list[i - 1][j - 1][1] - list[i - 1][j][1]
                         res = (fr**2 + sc**2)**0.5
                         if type(res) == complex:
                             self.test.setPlainText(f'({fr}+{sc})**0.5 == {res}')
-                            self.shit.append([c, a, b, round(res.imag, int(self.chisla.text()))])
+                            kirieshka.append(round(res.imag, int(self.chisla.text())))
                         else:
-                            self.shit.append([c, a, b, round(res, int(self.chisla.text()))])
-                    else:
-                        self.shit.append([c, a, b])
+                            kirieshka.append(round(res, int(self.chisla.text())))
+                    if self.rumb.isChecked() and j != len(list[i - 1]):
+                        kirieshka.append(rumb(list[i - 1][j - 1][0], list[i - 1][j - 1][1],
+                               list[i - 1][j][0], list[i - 1][j][1]))
+                    self.shit.append(kirieshka)
             self.shit.append([])
 
         book = openpyxl.Workbook()
@@ -359,7 +365,7 @@ class CoordPluginDialog(QtWidgets.QDialog, FORM_CLASS, QtWidgets.QLabel, QtWidge
         self.id_or_name = text
 
 
-def rumb(x1, y1, x2, y2, feature, parent):
+def rumb(x1, y1, x2, y2):
     p1 = QgsPoint(x1, y1)
     p2 = QgsPoint(x2, y2)
     a = p1.azimuth(p2)
@@ -402,5 +408,4 @@ def rumb(x1, y1, x2, y2, feature, parent):
             b = u'ЮВ ' + str(int(d)) + u'°' + str(int(e)) + u'`'
         if a == 180:
             b = u'ЮВ 0°0`'
-    b.encode("cp866")
     return b
